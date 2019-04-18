@@ -2,7 +2,7 @@
   "name": "pascal-nodejs-ipc-example",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p dist/ppu && fpc -vewnqh -vm11030,11031 -FumORMot -Fu../src -FUdist/ppu -odist/child child.pas",
+    "build": "mkdir -p dist/ppu && fpc -FumORMot -Fu../src -FUdist/ppu -odist/child child.pas",
     "start": "npm run build && node parent.js"
   },
   "private": true

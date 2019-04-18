@@ -9,6 +9,11 @@ uses
   nodeipc,
   SynCommons;
 
+function JsonParser(Message: RawByteString): Variant;
+begin
+  Result := _Json(Message);
+end;
+
 type
   TApplication = class
   private
@@ -19,11 +24,6 @@ type
   end;
 
 { TApplication }
-
-function JsonParser(Message: RawByteString): Variant;
-begin
-  Result := _Json(Message);
-end;
 
 procedure TApplication.OnMessage(Message: Variant);
 begin
