@@ -1,9 +1,9 @@
 # pascal-nodejs-ipc
 
-Simple Free Pascal library to communicate with a parent Node.js process
-through Inter Process Communications (IPC). 
+Free Pascal library for communicating with a parent Node.js process through
+Inter Process Communications (IPC). 
 
-Tested with FPC v3.0.4 and v3.1.1, node v11.9.0 on Linux x64
+Tested with FPC v3.0.4, v3.1.1, node v11.9.0 on Linux x64
 
 [Example project](example)
 
@@ -65,7 +65,7 @@ end.
 ## How Node.js built-in IPC module works
 
 - Node.js passes a bi-directional IPC stream to a child process as a file
-descriptor
+descriptor.
 ```js
 const proc = spawn('./dist/child', {
   stdio: ['inherit', 'inherit', 'inherit', 'ipc']
@@ -75,5 +75,5 @@ const proc = spawn('./dist/child', {
 - To send a message trough this stream, each process can send JSON encoded
   strings separated by a new line char.
 
-- To get the exact file descriptor, child process reads NODE_CHANNEL_FD
+- To get the exact file descriptor, a child process reads NODE_CHANNEL_FD
   environment variable.
