@@ -1,3 +1,6 @@
+{ Free Pascal library for communicating with a parent Node.js process
+  through IPC. Licensed under MIT.
+  https://github.com/megahertz/pascal-nodejs-ipc }
 unit nodeipc;
 
 {$mode objfpc}
