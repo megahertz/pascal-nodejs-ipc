@@ -3,7 +3,7 @@
 const { spawn } = require('child_process');
 
 const proc = spawn('./dist/child', {
-  stdio: ['inherit', 'inherit', 'inherit', 'ipc']
+  stdio: ['pipe', 'pipe', 'pipe', 'ipc']
 });
 
 proc

@@ -14,7 +14,7 @@ Tested with FPC v3.0.4, v3.1.1, node v11.9.0 on Linux x64
 const { spawn } = require('child_process');
 
 const proc = spawn('./dist/child', {
-  stdio: ['inherit', 'inherit', 'inherit', 'ipc']
+  stdio: ['pipe', 'pipe', 'pipe', 'ipc']
 });
 
 // Using built-in Node.js IPC
@@ -68,7 +68,7 @@ end.
 descriptor.
 ```js
 const proc = spawn('./dist/child', {
-  stdio: ['inherit', 'inherit', 'inherit', 'ipc']
+  stdio: ['pipe', 'pipe', 'pipe', 'ipc']
 });
 ```
 
