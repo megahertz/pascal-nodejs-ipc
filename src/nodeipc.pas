@@ -1,6 +1,7 @@
 { Free Pascal library for communicating with a parent Node.js process
   through IPC. Licensed under MIT.
-  https://github.com/megahertz/pascal-nodejs-ipc }
+  @link https://github.com/megahertz/pascal-nodejs-ipc 
+  @version 1.0.0 }
 unit nodeipc;
 
 {$mode objfpc}
@@ -44,11 +45,11 @@ type
     FWriteStream: TOutputPipeStream;
     procedure SetOnMessage(AOnMessage: TOnMessage);
   protected
-    procedure OnMessageReceived(Message: RawByteString);
+    procedure OnMessageReceived(Message: RawByteString); virtual;
   public
-    constructor Create;
+    constructor Create; virtual;
     destructor Destroy; override;
-    procedure Send(Message: Variant);
+    procedure Send(Message: Variant); virtual;
     property IsAttached: Boolean read FIsAttached;
     property JsonParser: TJsonParser write FJsonParser;
     property OnMessage: TOnMessage write SetOnMessage;
@@ -200,11 +201,10 @@ var
   NodeIpcFdStr: string;
   NodeIpcFd: LongInt;
 begin
-  inherited Create;
-
-  FMessageBufferLock := TCriticalSection.Create;
+  inherited;
 
   FIsAttached := False;
+  FMessageBufferLock := TCriticalSection.Create;
 
   NodeIpcFdStr := GetEnvironmentVariable('NODE_CHANNEL_FD');
   if NodeIpcFdStr = '' then
