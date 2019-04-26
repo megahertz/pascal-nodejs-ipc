@@ -14,11 +14,11 @@ Tested with FPC v3.0.4, v3.1.1, node v11.9.0 on Linux x64
 const { spawn } = require('child_process');
 
 const proc = spawn('./dist/child', {
-  stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+  stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
 });
 
 // Using built-in Node.js IPC
-proc.on('message', (msg) => { console.log('parent, new message:', msg) });
+proc.on('message', msg => console.log('parent, new message:', msg));
 proc.send({ source: 'Node.js' });
 ```
 
@@ -27,7 +27,7 @@ proc.send({ source: 'Node.js' });
 program child;
 
 uses
-  {$IFDEF Unix}cthreads,{$ENDIF} nodeipc;
+  {$ifdef Unix}cthreads,{$endif} nodeipc;
 
 type
   TApplication = class
@@ -68,7 +68,7 @@ end.
 descriptor.
 ```js
 const proc = spawn('./dist/child', {
-  stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+  stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
 });
 ```
 
